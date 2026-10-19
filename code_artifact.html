@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карина | Мобильный фотограф</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdfbf7',
+                            100: '#f7f0e6',
+                            200: '#eddcc8',
+                            300: '#dfc2a2',
+                            400: '#ce9f75',
+                            500: '#be8353',
+                            600: '#a36740',
+                            700: '#834e35',
+                            800: '#6a3f2f',
+                            900: '#57352a',
+                            dark: '#120f0e',
+                            card: '#1b1715',
+                            gold: '#e6c594',
+                            rose: '#e8b4a8',
+                            champagne: '#f5e6d3'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #120f0d;
+            --text-main: #f7f3ee;
+            --text-muted: rgba(212, 197, 185, 0.8);
+            --card-bg: rgba(28, 23, 21, 0.65);
+            --card-border: rgba(230, 197, 148, 0.12);
+            --header-border: rgba(230, 197, 148, 0.15);
+            --btn-bg: rgba(245, 230, 211, 0.06);
+            --btn-border: rgba(230, 197, 148, 0.25);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --gradient-text: linear-gradient(135deg, #fceade 0%, #e6c594 50%, #d8a278 100%);
+            --inner-card-bg: rgba(24, 20, 18, 0.4);
+        }
+
+        /* Light Theme Palette: Precise Soft Nude Powder & Elegant Satin Rose from Reference */
+        html.light {
+            --bg-color: #e3c2c2;
+            --text-main: #361f24;
+            --text-muted: #6b434a;
+            --card-bg: rgba(250, 232, 232, 0.88);
+            --card-border: rgba(200, 135, 148, 0.45);
+            --header-border: rgba(200, 135, 148, 0.4);
+            --btn-bg: rgba(230, 175, 186, 0.85);
+            --btn-border: rgba(190, 120, 135, 0.6);
+            --shadow-color: rgba(140, 70, 85, 0.25);
+            --gradient-text: linear-gradient(135deg, #8c2d40 0%, #b85065 50%, #8c3b28 100%);
+            --inner-card-bg: rgba(242, 216, 218, 0.95);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .glass-panel {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        html.light .glass-panel {
+            box-shadow: 0 20px 45px -10px var(--shadow-color), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        .glass-button {
+            background: var(--btn-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--btn-border);
+            color: var(--text-main);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-button:hover {
+            background: rgba(242, 196, 206, 0.4);
+            border-color: rgba(222, 150, 165, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px var(--shadow-color);
+        }
+        html.light .glass-button {
+            background: rgba(228, 168, 180, 0.9);
+            border-color: rgba(185, 115, 130, 0.7);
+            color: #2b1318;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px rgba(160, 80, 95, 0.3);
+        }
+        html.light .glass-button:hover {
+            background: rgba(220, 150, 165, 1);
+            border-color: rgba(170, 95, 112, 0.9);
+            box-shadow: 0 12px 30px -5px rgba(150, 70, 88, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+        }
+        .glass-button:hover {
+            background: rgba(242, 196, 206, 0.4);
+            border-color: rgba(222, 150, 165, 0.7);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px -5px var(--shadow-color);
+        }
+        html.light .glass-button {
+            background: rgba(228, 168, 180, 0.9);
+            border-color: rgba(185, 115, 130, 0.7);
+            color: #2b1318;
+            font-weight: 600;
+        }
+        html.light .glass-button:hover {
+            background: rgba(220, 150, 165, 1);
+            border-color: rgba(170, 95, 112, 0.9);
+            box-shadow: 0 8px 25px -5px rgba(150, 70, 88, 0.35);
+        }
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-dynamic-muted {
+            color: var(--text-muted);
+        }
+        .bg-dynamic-inner {
+            background-color: var(--inner-card-bg);
+            transition: background-color 0.4s ease;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e8b4a8;
+            border-radius: 4px;
+        }
+
+        /* FILM STRIP BACKGROUND ANIMATION STYLES */
+        .film-strip-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.28;
+            transition: opacity 0.5s ease;
+        }
+        /* SOFT ELEGANT TRANSLUCENCY IN LIGHT MODE */
+        html.light .film-strip-container {
+            opacity: 0.65;
+        }
+
+        .film-strip {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: #0d0b0a;
+            padding: 20px 10px;
+            border-left: 3px dashed rgba(230, 197, 148, 0.4);
+            border-right: 3px dashed rgba(230, 197, 148, 0.4);
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
+            border-radius: 6px;
+            will-change: transform;
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        html.light .film-strip {
+            background: #2d181c;
+            border-left: 3px dashed rgba(225, 140, 160, 1);
+            border-right: 3px dashed rgba(225, 140, 160, 1);
+            box-shadow: 0 10px 30px rgba(110, 40, 55, 0.4);
+        }
+
+        .film-frame {
+            position: relative;
+            width: 140px;
+            height: 190px;
+            background: #000;
+            border: 2px solid #221c19;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+            transition: border-color 0.4s ease, background 0.4s ease;
+        }
+
+        html.light .film-frame {
+            background: #180b0e;
+            border-color: rgba(220, 130, 150, 0.9);
+        }
+
+        .film-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(108%) brightness(92%) sepia(20%) saturate(115%) hue-rotate(-5deg);
+            transition: filter 0.4s ease;
+        }
+
+        html.light .film-frame img {
+            filter: contrast(106%) brightness(96%) sepia(10%) saturate(120%);
+        }
+
+        /* Sprocket holes (перфорация по бокам) */
+        .film-strip::before,
+        .film-strip::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background-image: repeating-linear-gradient(
+                to bottom,
+                rgba(230, 197, 148, 0.6) 0px,
+                rgba(230, 197, 148, 0.6) 8px,
+                transparent 8px,
+                transparent 18px
+            );
+            transition: background-image 0.4s ease;
+        }
+
+        html.light .film-strip::before,
+        html.light .film-strip::after {
+            background-image: repeating-linear-gradient(
+                to bottom,
+                #f2b6c1 0px,
+                #f2b6c1 8px,
+                transparent 8px,
+                transparent 18px
+            );
+        }
+        .film-strip::before { left: 2px; }
+        .film-strip::after { right: 2px; }
+    </style>
+</head>
+<body class="selection:bg-brand-400 selection:text-brand-dark">
+
+    <!-- Film Strip Background Canvas Elements -->
+    <div class="film-strip-container">
+        <!-- Left Film Strip (Fixed Left Position) -->
+        <div id="filmStripLeft" class="film-strip left-2 -top-40">
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/c5/5d/73/c55d737dfe15b1564164b23d51545114.jpg" alt="Film 1"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/ed/09/3f/ed093f6c1cc749c505c0bcdf43258cad.jpg" alt="Film 2"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg" alt="Film 3"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg" alt="Film 4"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg" alt="Film 5"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg" alt="Film 6"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/4d/ac/a4/4daca4cffc00129e1e7cf42cf9ab3c71.jpg" alt="Film 7"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/8b/36/1c/8b361c6ebffa0318174c119da95ced08.jpg" alt="Film 8"></div>
+            <!-- Duplicated frames to extend length during full scroll -->
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/c5/5d/73/c55d737dfe15b1564164b23d51545114.jpg" alt="Film 1"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/ed/09/3f/ed093f6c1cc749c505c0bcdf43258cad.jpg" alt="Film 2"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg" alt="Film 3"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg" alt="Film 4"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg" alt="Film 5"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg" alt="Film 6"></div>
+        </div>
+
+        <!-- Right Film Strip (Fixed Right Position) -->
+        <div id="filmStripRight" class="film-strip right-2 -top-40">
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/8b/36/1c/8b361c6ebffa0318174c119da95ced08.jpg" alt="Film 8"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/4d/ac/a4/4daca4cffc00129e1e7cf42cf9ab3c71.jpg" alt="Film 7"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg" alt="Film 6"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg" alt="Film 5"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg" alt="Film 4"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg" alt="Film 3"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/ed/09/3f/ed093f6c1cc749c505c0bcdf43258cad.jpg" alt="Film 2"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/c5/5d/73/c55d737dfe15b1564164b23d51545114.jpg" alt="Film 1"></div>
+            <!-- Duplicated frames to extend length during full scroll -->
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/8b/36/1c/8b361c6ebffa0318174c119da95ced08.jpg" alt="Film 8"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/4d/ac/a4/4daca4cffc00129e1e7cf42cf9ab3c71.jpg" alt="Film 7"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg" alt="Film 6"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg" alt="Film 5"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg" alt="Film 4"></div>
+            <div class="film-frame"><img src="https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg" alt="Film 3"></div>
+        </div>
+    </div>
+
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainHeader">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-2xl shadow-black/20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-gold via-brand-400 to-brand-rose flex items-center justify-center text-brand-dark font-bold text-lg font-serif shadow-md shadow-brand-gold/20">
+                        K
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif-title text-xl font-semibold tracking-wider group-hover:text-brand-gold transition-colors">КАРИНА</span>
+                        <span class="text-[9px] text-brand-400 tracking-[0.2em] uppercase font-light">Мобильный фотограф</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-dynamic-muted">
+                    <a href="#about" class="hover:text-brand-gold transition-colors">Обо мне</a>
+                    <a href="#portfolio" class="hover:text-brand-gold transition-colors">Портфолио</a>
+                    <a href="#prices" class="hover:text-brand-gold transition-colors">Услуги и Прайс</a>
+                    <a href="#faq" class="hover:text-brand-gold transition-colors">FAQ</a>
+                </div>
+
+                <!-- CTA Button & Theme Toggle -->
+                <div class="flex items-center gap-3">
+                    <!-- Theme Switcher Button -->
+                    <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Переключить тему" class="w-10 h-10 rounded-full glass-button flex items-center justify-center text-brand-gold hover:scale-110 transition-transform">
+                        <i id="themeIcon" class="fa-solid fa-sun text-base"></i>
+                    </button>
+
+                    <button onclick="openBookingModal('Консультация и бронирование')" class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-gradient-to-r from-brand-gold via-brand-rose to-brand-400 hover:from-brand-rose hover:to-brand-gold text-brand-dark transition-all duration-300 shadow-lg shadow-brand-rose/20 hover:scale-105 hover:shadow-brand-rose/35">
+                        <i class="fa-brands fa-telegram mr-1.5"></i> Записаться
+                    </button>
+                    <!-- Mobile Menu Trigger -->
+                    <button id="mobileMenuBtn" class="md:hidden text-dynamic-muted hover:text-brand-gold text-xl p-2">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu Modal -->
+        <div id="mobileMenu" class="hidden md:hidden fixed inset-x-4 top-20 z-50 glass-panel rounded-2xl p-6 border border-brand-gold/20 shadow-2xl">
+            <div class="flex flex-col space-y-4 text-center font-medium">
+                <a href="#about" class="mobile-link py-2 hover:text-brand-gold border-b border-brand-gold/10">Обо мне</a>
+                <a href="#portfolio" class="mobile-link py-2 hover:text-brand-gold border-b border-brand-gold/10">Портфолио</a>
+                <a href="#prices" class="mobile-link py-2 hover:text-brand-gold border-b border-brand-gold/10">Услуги и Прайс</a>
+                <a href="#faq" class="mobile-link py-2 hover:text-brand-gold">FAQ</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen pt-32 pb-20 flex items-center justify-center overflow-hidden">
+        <!-- Ambient background lighting -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-brand-gold/15 dark:bg-brand-gold/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[350px] h-[350px] bg-brand-rose/25 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left text content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-xs font-semibold text-brand-gold border border-brand-gold/30 shadow-md">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Открыта запись на фотосессии • Киров
+                    </div>
+
+                    <h1 class="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-light leading-[1.15]">
+                        Эстетика <span class="italic font-normal gradient-text">мобильной фотосъемки</span> и живые кадры
+                    </h1>
+
+                    <p class="text-dynamic-muted text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Привет! Я Карина — создаю эстетичные личные портреты, стильные съёмки для брендов и визуал блога на iPhone 18 Pro.
+                    </p>
+
+                    <!-- CTA Group -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <button onclick="openBookingModal('Персональная фотосессия')" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-rose via-brand-gold to-brand-400 text-brand-dark font-bold text-sm hover:brightness-105 transition-all shadow-xl shadow-brand-rose/25 hover:shadow-brand-rose/40 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-camera"></i>
+                            Записаться на фотосессию
+                        </button>
+                        <a href="#portfolio" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-button text-sm font-medium flex items-center justify-center gap-2">
+                            Смотреть Портфолио
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right profile image banner -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Decorative Frame Glow -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold via-brand-400 to-brand-rose rounded-3xl blur-md opacity-40 group-hover:opacity-100 transition duration-1000"></div>
+                        
+                        <div class="relative glass-panel rounded-3xl p-3 border border-brand-gold/25 overflow-hidden shadow-2xl">
+                            <img src="https://sun9-38.vkuserphoto.ru/s/v1/ig2/jOBW0aikXpEk-YEFolhj54UYbxLW383MHn7dR3ZOEt7wbdIxryGPhrLtGkJwzXXYtFDOXL2yOxfQ_KdUWcIdmh92.jpg?quality=95&as=32x23,48x35,72x52,108x78,160x116,240x174,360x262,480x349,540x392,640x465,720x523,1080x785,1280x930&from=bu&u=XI64BEMgftsWIA5Qo0fFCj-6_c9PP_TuLRtESm37YoQ&cs=640x0" 
+                                 onerror="this.src='https://placehold.co/600x800/1b1715/e6c594?text=Карина'"
+                                 alt="Карина — Мобильный Фотограф" 
+                                 class="w-full h-[520px] object-cover object-top rounded-2xl filter brightness-105 contrast-105 hover:scale-102 transition-transform duration-700 shadow-xl">
+                            
+                            <!-- Floating Badge -->
+                            <div class="absolute bottom-6 left-6 right-6 glass-panel p-4 rounded-2xl border border-brand-gold/20 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center text-brand-gold">
+                                        <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] text-dynamic-muted uppercase tracking-wider">Техника съемки</p>
+                                        <p class="text-sm font-semibold">iPhone 18 Pro</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs px-3 py-1 bg-brand-gold/15 text-brand-gold border border-brand-gold/30 rounded-full font-medium">Top Quality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 relative border-t border-brand-gold/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-xs font-semibold text-brand-gold uppercase tracking-widest">Портфолио работ</span>
+                    <h2 class="font-serif-title text-3xl sm:text-5xl font-light mt-2">
+                        Атмосфера <span class="italic gradient-text">Backstage & Кадры</span>
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Main Project Block 1 (Compact Layout) -->
+            <div class="space-y-6">
+                <!-- Main Featured Series Container -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 bg-dynamic-inner p-4 rounded-3xl border border-brand-gold/15 shadow-xl" id="portfolioGrid">
+                    
+                    <!-- Left Column: Local Video Container -->
+                    <div class="portfolio-item portrait lifestyle lg:col-span-5 relative rounded-2xl overflow-hidden glass-panel border border-brand-gold/20 group h-[380px] lg:h-[520px]">
+                        <div class="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-brand-gold/30 text-[11px] font-semibold text-white">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                            BACKSTAGE
+                        </div>
+                        
+                        <!-- HTML5 Native Video Tag -->
+                        <video 
+                            class="w-full h-full object-cover rounded-2xl" 
+                            controls 
+                            playsinline 
+                            preload="metadata"
+                            poster="https://sun9-46.vkuserphoto.ru/s/v1/ig2/dGkU0FX82w8Qu7bB47_GZat52CxodoSO6JCSBhXJXVPuvagFDCVM1vPWfXovqqnkJicWLCt9BKzDuOKA975OkxRUiJUnZA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&cs=1919x0"
+                            onerror="document.getElementById('videoNotice').classList.remove('hidden')">
+                            <source src="вид.MOV" type="video/quicktime">
+                            <source src="вид.mov" type="video/quicktime">
+                            <source src="вид.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+
+                        <!-- Helper Notice overlay if video is not in the folder yet -->
+                        <div id="videoNotice" class="hidden absolute inset-0 bg-black/85 backdrop-blur-md p-6 flex flex-col items-center justify-center text-center z-10 space-y-3 border border-brand-gold/20">
+                            <div class="w-12 h-12 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-file-video"></i>
+                            </div>
+                            <h4 class="text-white font-semibold text-sm">Поместите файл «вид.MOV» в папку с сайтом</h4>
+                            <p class="text-xs text-zinc-400 max-w-xs leading-relaxed">
+                                Скопируйте видео и вставьте его рядом с файлом <code class="bg-zinc-800 px-1.5 py-0.5 rounded text-brand-gold">index.html</code>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: 3 Primary Photos Stack -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4 h-full">
+                        
+                        <!-- Photo 1 -->
+                        <div onclick="openLightbox('https://sun9-46.vkuserphoto.ru/s/v1/ig2/dGkU0FX82w8Qu7bB47_GZat52CxodoSO6JCSBhXJXVPuvagFDCVM1vPWfXovqqnkJicWLCt9BKzDuOKA975OkxRUiJUnZA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&cs=1919x0')" 
+                             class="portfolio-item portrait group relative rounded-2xl overflow-hidden glass-panel border border-brand-gold/15 h-[220px] lg:h-[520px] cursor-pointer">
+                            <img src="https://sun9-46.vkuserphoto.ru/s/v1/ig2/dGkU0FX82w8Qu7bB47_GZat52CxodoSO6JCSBhXJXVPuvagFDCVM1vPWfXovqqnkJicWLCt9BKzDuOKA975OkxRUiJUnZA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&cs=1919x0" 
+                                 alt="Кадр 1 — Кружевная вуаль" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div>
+                                    <span class="text-[10px] text-brand-gold font-semibold uppercase tracking-wider">Кадр 1</span>
+                                    <p class="text-sm font-serif-title text-white">Кружевная вуаль</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 2 -->
+                        <div onclick="openLightbox('https://sun9-77.vkuserphoto.ru/s/v1/ig2/j1pG6BxI23fXZR3xC4ExH2oU9ksAtUJQTmgvDeZpQHYRYc4nADUb7ZY132bjH9WUe9P5mgwpmoRWA_VbeRsZGoAKlYpAVA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0')" 
+                             class="portfolio-item portrait brand group relative rounded-2xl overflow-hidden glass-panel border border-brand-gold/15 h-[220px] lg:h-[520px] cursor-pointer">
+                            <img src="https://sun9-77.vkuserphoto.ru/s/v1/ig2/j1pG6BxI23fXZR3xC4ExH2oU9ksAtUJQTmgvDeZpQHYRYc4nADUb7ZY132bjH9WUe9P5mgwpmoRWA_VbeRsZGoAKlYpAVA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0" 
+                                 onerror="this.onerror=null; this.src='https://sun9-65.vkuserphoto.ru/s/v1/ig2/PPG3C3XHvhC9JLWTRfxZsg70iv_p2z4Tbq7m4HYtcQy4Fp5utvTMvN1FMIbJy3TaXK_3p4NZd9ATwfX1kGs6FnT0.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0';"
+                                 alt="Кадр 2 — Студийный портрет" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div>
+                                    <span class="text-[10px] text-brand-gold font-semibold uppercase tracking-wider">Кадр 2</span>
+                                    <p class="text-sm font-serif-title text-white">Студийный портрет</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo 3 -->
+                        <div onclick="openLightbox('https://sun9-84.vkuserphoto.ru/s/v1/ig2/KhKVnqXxnZPfJjG1LKzzrqzAtC_j9gvj0c53S_GKpdSBzzI25eSE2l2UErfkPlwgwW6I-kn8nTv5H-iGwrp4LvpNCq-oJQ.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0')" 
+                             class="portfolio-item portrait lifestyle group relative rounded-2xl overflow-hidden glass-panel border border-brand-gold/15 h-[220px] lg:h-[520px] cursor-pointer">
+                            <img src="https://sun9-84.vkuserphoto.ru/s/v1/ig2/KhKVnqXxnZPfJjG1LKzzrqzAtC_j9gvj0c53S_GKpdSBzzI25eSE2l2UErfkPlwgwW6I-kn8nTv5H-iGwrp4LvpNCq-oJQ.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0" 
+                                 alt="Кадр 3 — Силуэтный образ" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                                <div>
+                                    <span class="text-[10px] text-brand-gold font-semibold uppercase tracking-wider">Кадр 3</span>
+                                    <p class="text-sm font-serif-title text-white">Силуэтный образ</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Expand Button for Additional Photos -->
+                <div class="text-center pt-2">
+                    <button id="toggleMorePhotosBtn" onclick="toggleMorePhotos()" class="px-6 py-3 rounded-2xl glass-button text-xs font-semibold text-brand-gold hover:text-brand-700 border border-brand-gold/30 hover:border-brand-gold/60 inline-flex items-center gap-2 transition-all">
+                        <i class="fa-solid fa-images"></i>
+                        <span id="toggleBtnText">Посмотреть всю серию (Ещё 6 фото)</span>
+                        <i id="toggleBtnIcon" class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                </div>
+
+                <!-- Hidden Gallery Grid with Additional Photos -->
+                <div id="additionalPhotosGrid" class="hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 bg-dynamic-inner p-4 rounded-3xl border border-brand-gold/10 animate-in fade-in duration-300">
+                    <div onclick="openLightbox('https://sun9-2.vkuserphoto.ru/s/v1/ig2/Zteaxlh8M7ztgXDr-M145k7Rc-Qk3proO3ub74qri77mEloqc7u-dCaKT6Hmy9tgYV4dgJZrnkCYds9LvAKqUWdMeumOwA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://sun9-2.vkuserphoto.ru/s/v1/ig2/Zteaxlh8M7ztgXDr-M145k7Rc-Qk3proO3ub74qri77mEloqc7u-dCaKT6Hmy9tgYV4dgJZrnkCYds9LvAKqUWdMeumOwA.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1920x2560&from=bu&cs=1920x0" 
+                             alt="Доп. кадр" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div onclick="openLightbox('https://i.pinimg.com/736x/ed/09/3f/ed093f6c1cc749c505c0bcdf43258cad.jpg')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/ed/09/3f/ed093f6c1cc749c505c0bcdf43258cad.jpg" 
+                             alt="Доп. кадр 2" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div onclick="openLightbox('https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/f0/73/34/f073342ea7404e88ae044d47c011c0ca.jpg" 
+                             alt="Доп. кадр 3" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div onclick="openLightbox('https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/df/a6/a7/dfa6a7652582b4f614ca4d690210a9df.jpg" 
+                             alt="Доп. кадр 4" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div onclick="openLightbox('https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/83/39/b7/8339b76227ebbe64162a126f5af91d6a.jpg" 
+                             alt="Доп. кадр 5" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div onclick="openLightbox('https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg')" 
+                         class="portfolio-item portrait group relative rounded-xl overflow-hidden glass-panel border border-brand-gold/10 h-[220px] cursor-pointer">
+                        <img src="https://i.pinimg.com/736x/f3/71/14/f371144931199fd42d81c5c53b03fa26.jpg" 
+                             alt="Доп. кадр 6" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-brand-gold/10 text-center text-xs text-dynamic-muted">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <div class="flex justify-center items-center gap-6 text-dynamic-muted">
+                <a href="https://t.me/tkaarinaaa" target="_blank" class="hover:text-brand-gold transition-colors text-xl" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://vk.ru/tkaarinaa" target="_blank" class="hover:text-brand-gold transition-colors text-xl" title="ВКонтакте"><i class="fa-brands fa-vk"></i></a>
+            </div>
+            <p>© 2026 Карина. Мобильный фотограф. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal with Slider -->
+    <div id="lightboxModal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 selection:bg-transparent">
+        <!-- Close Button -->
+        <button onclick="closeLightbox()" aria-label="Закрыть" class="absolute top-5 right-5 sm:top-8 sm:right-8 text-white hover:text-brand-gold w-12 h-12 rounded-full bg-zinc-900/80 hover:bg-zinc-800/90 border border-brand-gold/25 flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 z-50">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <!-- Previous Button -->
+        <button onclick="prevImage(event)" aria-label="Предыдущее фото" class="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 text-white hover:text-brand-gold w-12 h-12 rounded-full bg-zinc-900/80 hover:bg-zinc-800/90 border border-brand-gold/25 flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 z-50">
+            <i class="fa-solid fa-chevron-left text-lg"></i>
+        </button>
+
+        <!-- Next Button -->
+        <button onclick="nextImage(event)" aria-label="Следующее фото" class="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 text-white hover:text-brand-gold w-12 h-12 rounded-full bg-zinc-900/80 hover:bg-zinc-800/90 border border-brand-gold/25 flex items-center justify-center transition-all duration-300 shadow-xl hover:scale-110 z-50">
+            <i class="fa-solid fa-chevron-right text-lg"></i>
+        </button>
+
+        <!-- Content Area -->
+        <div class="max-w-4xl max-h-[90vh] flex flex-col items-center select-none" id="lightboxContent">
+            <img id="lightboxImg" src="" alt="Enlarged Portfolio Shot" class="max-h-[80vh] w-auto rounded-2xl object-contain border border-brand-gold/20 shadow-2xl transition-all duration-300">
+            <div class="flex items-center gap-3 mt-4 text-center">
+                <span id="lightboxCounter" class="text-xs text-brand-gold bg-zinc-900/90 border border-brand-gold/30 px-3 py-1 rounded-full font-medium"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal (Direct Contacts) -->
+    <div id="bookingModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 max-w-md w-full border border-brand-gold/30 relative shadow-2xl shadow-brand-gold/10 animate-in fade-in zoom-in-95 duration-200">
+            <!-- Close Button -->
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-zinc-400 hover:text-white w-9 h-9 rounded-full bg-zinc-800/60 flex items-center justify-center border border-zinc-700/50 transition-colors">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="text-center space-y-2 mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-[11px] font-semibold tracking-wider uppercase">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Связь напрямую
+                </span>
+                <h3 class="font-serif-title text-2xl sm:text-3xl text-white font-semibold">Запись на фотосессию</h3>
+                <p id="modalSelectedPkg" class="text-xs text-brand-gold font-medium bg-zinc-900/80 py-1.5 px-3 rounded-lg border border-brand-gold/20 inline-block mt-1">
+                    Консультация и выбор даты
+                </p>
+                <p class="text-xs text-zinc-300/80 font-light pt-1">Выберите удобный способ связи. Я отвечу вам в течение 15 минут!</p>
+            </div>
+
+            <!-- Contact Options Container -->
+            <div class="space-y-3.5">
+                
+                <!-- Telegram Direct Button -->
+                <a href="https://t.me/tkaarinaaa" target="_blank" rel="noopener noreferrer" class="group relative flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-sky-500/20 via-sky-600/10 to-transparent border border-sky-500/30 hover:border-sky-400 transition-all duration-300 hover:scale-[1.02]">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-telegram"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs text-sky-300 font-medium uppercase tracking-wider">Написать в Telegram</p>
+                            <p class="text-sm font-semibold text-white">@tkaarinaaa</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-sky-400/70 group-hover:text-sky-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-xs"></i>
+                </a>
+
+                <!-- VK Direct Button -->
+                <a href="https://vk.ru/tkaarinaa" target="_blank" rel="noopener noreferrer" class="group relative flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-blue-500/20 via-blue-600/10 to-transparent border border-blue-500/30 hover:border-blue-400 transition-all duration-300 hover:scale-[1.02]">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-vk"></i>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs text-blue-300 font-medium uppercase tracking-wider">Написать ВКонтакте</p>
+                            <p class="text-sm font-semibold text-white">vk.ru/tkaarinaa</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-blue-400/70 group-hover:text-blue-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all text-xs"></i>
+                </a>
+
+            </div>
+
+            <!-- Quick Copy Action -->
+            <div class="mt-5 pt-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
+                <span>Скопировать контакты:</span>
+                <div class="flex gap-2">
+                    <button onclick="copyToClipboard('https://t.me/tkaarinaaa', 'Ссылка на Telegram скопирована!')" class="px-2.5 py-1 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700/50 transition-colors">
+                        <i class="fa-brands fa-telegram mr-1 text-sky-400"></i> TG
+                    </button>
+                    <button onclick="copyToClipboard('https://vk.ru/tkaarinaa', 'Ссылка на VK скопирована!')" class="px-2.5 py-1 rounded-lg bg-zinc-800/80 hover:bg-zinc-700 text-zinc-300 hover:text-white border border-zinc-700/50 transition-colors">
+                        <i class="fa-brands fa-vk mr-1 text-blue-400"></i> VK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 z-50 glass-panel border border-brand-gold text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <div>
+            <p id="toastTitle" class="text-sm font-semibold">Успешно!</p>
+            <p id="toastMsg" class="text-xs text-zinc-300">Ссылка скопирована в буфер обмена.</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme switching logic
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light');
+                updateThemeIcon(true);
+            } else {
+                document.documentElement.classList.remove('light');
+                updateThemeIcon(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isLight = document.documentElement.classList.toggle('light');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            updateThemeIcon(isLight);
+        }
+
+        function updateThemeIcon(isLight) {
+            const icon = document.getElementById('themeIcon');
+            if (icon) {
+                if (isLight) {
+                    icon.className = 'fa-solid fa-moon text-base text-rose-600';
+                } else {
+                    icon.className = 'fa-solid fa-sun text-base text-brand-gold';
+                }
+            }
+        }
+
+        // Initialize theme before full render
+        initTheme();
+
+        // Array to store all lightbox items dynamically
+        let galleryItems = [];
+        let currentImageIndex = 0;
+
+        // Initialize gallery elements index on page load
+        function initGallery() {
+            galleryItems = [];
+            const clickables = document.querySelectorAll('[onclick*="openLightbox"]');
+            clickables.forEach((el, idx) => {
+                const onclickStr = el.getAttribute('onclick');
+                // Extract image URL parameter from openLightbox('url')
+                const matches = onclickStr.match(/openLightbox\(['"]([^'"]+)['"]\)/);
+                if (matches) {
+                    galleryItems.push({
+                        src: matches[1]
+                    });
+                    // Re-assign onclick handler to open exact index
+                    el.onclick = function() {
+                        openLightboxByIndex(idx);
+                    };
+                }
+            });
+        }
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) initGallery();
+            if (index < 0 || index >= galleryItems.length) return;
+            
+            currentImageIndex = index;
+            updateLightboxContent();
+
+            const modal = document.getElementById('lightboxModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Legacy/Direct fallback wrapper
+        function openLightbox(imgSrc) {
+            if (galleryItems.length === 0) initGallery();
+            const foundIdx = galleryItems.findIndex(item => item.src === imgSrc);
+            if (foundIdx !== -1) {
+                openLightboxByIndex(foundIdx);
+            } else {
+                galleryItems.push({ src: imgSrc });
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function updateLightboxContent() {
+            const img = document.getElementById('lightboxImg');
+            const counterElem = document.getElementById('lightboxCounter');
+
+            const item = galleryItems[currentImageIndex];
+            if (item && img) {
+                img.src = item.src;
+                if (counterElem) counterElem.innerText = `${currentImageIndex + 1} / ${galleryItems.length}`;
+            }
+        }
+
+        function nextImage(e) {
+            if (e) e.stopPropagation();
+            if (galleryItems.length === 0) return;
+            currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+            updateLightboxContent();
+        }
+
+        function prevImage(e) {
+            if (e) e.stopPropagation();
+            if (galleryItems.length === 0) return;
+            currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+            updateLightboxContent();
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Keyboard & Touch events
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initGallery();
+
+            const lightboxModal = document.getElementById('lightboxModal');
+            if (lightboxModal) {
+                lightboxModal.addEventListener('click', (e) => {
+                    if (e.target === lightboxModal) {
+                        closeLightbox();
+                    }
+                });
+
+                // Touch swipe listeners
+                lightboxModal.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                lightboxModal.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                const modal = document.getElementById('lightboxModal');
+                if (modal && !modal.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowRight') nextImage();
+                    if (e.key === 'ArrowLeft') prevImage();
+                }
+            });
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 40;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextImage(); // Swiped left -> next
+            }
+            if (touchEndX > touchStartX + swipeThreshold) {
+                prevImage(); // Swiped right -> prev
+            }
+        }
+
+        // Toggle Expandable Additional Photos
+        function toggleMorePhotos() {
+            const grid = document.getElementById('additionalPhotosGrid');
+            const text = document.getElementById('toggleBtnText');
+            const icon = document.getElementById('toggleBtnIcon');
+
+            if (grid.classList.contains('hidden')) {
+                grid.classList.remove('hidden');
+                text.innerText = 'Свернуть галерею';
+                icon.classList.add('rotate-180');
+            } else {
+                grid.classList.add('hidden');
+                text.innerText = 'Посмотреть всю серию (Ещё 6 фото)';
+                icon.classList.remove('rotate-180');
+            }
+            // Re-index gallery items so all photos are navigable
+            initGallery();
+        }
+
+        // Booking Modal Handlers
+        function openBookingModal(packageName) {
+            const modal = document.getElementById('bookingModal');
+            const pkgLabel = document.getElementById('modalSelectedPkg');
+            if (pkgLabel && packageName) {
+                pkgLabel.innerText = packageName;
+            }
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('bookingModal');
+            if (modal) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Clipboard Helper with Toast Feedback
+        function copyToClipboard(text, successMessage) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast('Скопировано!', successMessage)).catch(() => legacyCopy(text, successMessage));
+            } else {
+                legacyCopy(text, successMessage);
+            }
+        }
+
+        function legacyCopy(text, successMessage) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast('Скопировано!', successMessage);
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMsg = document.getElementById('toastMsg');
+            if (!toast) return;
+
+            if (toastTitle) toastTitle.innerText = title;
+            if (toastMsg) toastMsg.innerText = message || '';
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        /* FILM STRIP SCROLL ANIMATION SCRIPT */
+        function animateFilmStripsOnScroll() {
+            const scrollY = window.scrollY;
+
+            // Left film strip moves downwards smoothly without running out of frames
+            const translateYLeft = scrollY * 0.22;
+            
+            // Right film strip moves upwards smoothly
+            const translateYRight = -scrollY * 0.22;
+
+            const stripLeft = document.getElementById('filmStripLeft');
+            const stripRight = document.getElementById('filmStripRight');
+
+            if (stripLeft) {
+                stripLeft.style.transform = `translateY(${translateYLeft}px)`;
+            }
+
+            if (stripRight) {
+                stripRight.style.transform = `translateY(${translateYRight}px)`;
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(animateFilmStripsOnScroll);
+        }, { passive: true });
+    </script>
+</body>
+</html>
